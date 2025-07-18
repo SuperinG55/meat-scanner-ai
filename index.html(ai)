@@ -29,17 +29,17 @@
      let bestPrediction = prediction[0];
 	 for (let i = 1; i < prediction.length; i++) {
      if (prediction[i].probability > bestPrediction.probability) {
-	 bestPrediction.probability) {
-	       bestPrediction = prediction[i];
-		   }
+	 bestPrediction=probability[i] ; 
+	  	   }
 		 }  
      const resultText = bestPrediction.className + ": " +
 	 Math.round(bestPrediction.probability * 100) + "%";
 	 
 	 document.getElementById("result").innerText = "Ramalan" + resultText;
+	 if (window.AppInventor) {
 
 
-	 window.AppInventor.setWebViewString(resultText);
+	 window.AppInventor.setWebViewString(bestPrediction.className);
     }
 
     loadModel();
